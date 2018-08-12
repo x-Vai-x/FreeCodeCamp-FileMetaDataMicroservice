@@ -10,11 +10,19 @@
 			$(document).ready(function(){
 				$('#form').on('submit',function(e){
 					e.preventDefault()
-					const file=$('#file').get(0).files[0]
-					$('#name').val(file.name)
-					$('#type').val(file.type)
-					$('#size').val(file.size)
-					this.submit()
+					const files=$('#file').get(0).files
+					
+					if(files.length>1){
+						alert("Only 1 file can be selected")
+					}
+					else{
+						const file=files[0]
+						$('#name').val(file.name)
+						$('#type').val(file.type)
+						$('#size').val(file.size)
+						this.submit()
+					}
+					
 				})
 			})
 		</script>
