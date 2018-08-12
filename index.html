@@ -4,6 +4,21 @@
 	<head>
 		<title> File metadata microservice </title>
 		<link rel="stylesheet" href="style.css">
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#form').on('submit',function(e){
+					e.preventDefault()
+					const file=$('#file').get(0).files[0]
+					$('#name').val(file.name)
+					$('#type').val(file.type)
+					$('#size').val(file.size)
+					this.submit()
+				})
+			})
+		</script>
+
 	</head>
 
 	<body>
@@ -12,21 +27,26 @@
 		</header>
 
 		<main>
-			<form class="column" action="/file" method="post">
+			<form id="form" class="column" action="/file" method="post">
 				
 					<section >
-						<input type="file" name="file" id="file">
+						<input type="file" id="file">
 					</section>
 		
-					<br>
-			
+					<input type="hidden" name="name" id="name">
+					<input type="hidden" name="type" id="type">
+					<input type="hidden" name="size" id="size">
+
 					<section>
 						<input type="submit">
 					</section>
+			
 					
 		
 				
 			</form>
+		
+					
 		</main>
 	</body>
 

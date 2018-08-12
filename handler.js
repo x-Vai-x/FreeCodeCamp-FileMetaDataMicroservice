@@ -14,7 +14,10 @@ app.get('/',function(req, res){
 })
 
 app.post('/file',function(req,res){
-	res.json(req.body.file)
+	const name = req.body.name
+	const type=req.body.type
+	const size=req.body.size
+	res.json({name: name, type: type, size: size})
 })
 
 app.listen(3001, function() {
